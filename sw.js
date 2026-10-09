@@ -9,6 +9,8 @@ const signature=r=>r&&(r.headers.get('etag')||r.headers.get('last-modified')||r.
 self.addEventListener('fetch',e=>{
  const r=e.request;if(r.method!=='GET')return;
  const u=new URL(r.url);
+ if(/(^|\.)(nominatim\.openstreetmap\.org|photon\.komoot\.io|router\.project-osrm\.org|api\.openrouteservice\.org|routing\.openstreetmap\.de|overpass-api\.de|overpass\.kumi\.systems)$/.test(u.hostname))return;
+ if(u.origin!==location.origin&&r.destination==='image')return; // tuiles de la carte : directement du réseau (cache du navigateur), pas dans la mémoire de l'application // services d'itinéraire : toujours en direct, jamais mis en cache
  e.respondWith((async()=>{
   const c=await caches.open(V);
   let m=await c.match(r);
