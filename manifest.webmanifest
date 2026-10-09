@@ -1,16 +1,16 @@
 {
-  "name": "Mes abaques",
-  "short_name": "Abaques",
-  "description": "Abaques de grues mobiles et à tour",
+  "name": "Crane Assist",
+  "short_name": "Crane Assist",
+  "description": "Abaques de levage, plans de levage et itinéraire grue",
+  "lang": "fr",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#e8edf9",
-  "theme_color": "#1237b8",
+  "background_color": "#0b57ff",
+  "theme_color": "#0b57ff",
   "icons": [
     {"src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
-    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
-    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"}
   ]
 }

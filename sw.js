@@ -1,4 +1,4 @@
-const V='abaques-v3';
+const V='crane-assist-v1';
 const CORE=['./','index.html','manifest.webmanifest','icon-180.png','icon-192.png','icon-512.png','noms.json'];
 // Installation : récupère des copies toutes fraîches (sans passer par le cache du navigateur).
 self.addEventListener('install',e=>{e.waitUntil(caches.open(V).then(c=>Promise.all(CORE.map(u=>fetch(u,{cache:'no-cache'}).then(r=>r.ok&&c.put(u,r)).catch(()=>{})))).then(()=>self.skipWaiting()))});
@@ -9,7 +9,7 @@ const signature=r=>r&&(r.headers.get('etag')||r.headers.get('last-modified')||r.
 self.addEventListener('fetch',e=>{
  const r=e.request;if(r.method!=='GET')return;
  const u=new URL(r.url);
- if(/(^|\.)(nominatim\.openstreetmap\.org|photon\.komoot\.io|router\.project-osrm\.org|api\.openrouteservice\.org|routing\.openstreetmap\.de|overpass-api\.de|overpass\.kumi\.systems)$/.test(u.hostname))return;
+ if(/(^|\.)(nominatim\.openstreetmap\.org|photon\.komoot\.io|router\.project-osrm\.org|api\.openrouteservice\.org|routing\.openstreetmap\.de|overpass-api\.de|overpass\.kumi\.systems|geoservices\.wallonie\.be)$/.test(u.hostname))return;
  if(u.origin!==location.origin&&r.destination==='image')return; // tuiles de la carte : directement du réseau (cache du navigateur), pas dans la mémoire de l'application // services d'itinéraire : toujours en direct, jamais mis en cache
  e.respondWith((async()=>{
   const c=await caches.open(V);
