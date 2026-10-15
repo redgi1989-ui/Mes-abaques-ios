@@ -1,4 +1,4 @@
-const V='levage-convoi-v93';
+const V='levage-convoi-v94';
 const CORE=['./','index.html','manifest.webmanifest','icon-180.png','icon-192.png','icon-512.png','noms.json'];
 // Installation : récupère des copies toutes fraîches (sans passer par le cache du navigateur).
 self.addEventListener('install',e=>{e.waitUntil(caches.open(V).then(c=>Promise.all(CORE.map(u=>fetch(u,{cache:'no-cache'}).then(r=>r.ok&&c.put(u,r)).catch(()=>{})))).then(()=>self.skipWaiting()))});
